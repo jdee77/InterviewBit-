@@ -1,0 +1,18 @@
+// Maximum Absolute Difference
+
+
+int Solution::maxArr(vector<int> &A) {
+    int res = INT_MIN;
+    int size = A.size();
+    int max1 = INT_MIN, min1=INT_MAX, max2=INT_MIN, min2=INT_MAX;
+    
+    for(int i = 0; i< size; i++)
+    {
+        max1 = max(A[i] + i, max1);
+        max2 = max(A[i] - i, max2);
+        min1 = min(A[i] + i, min1);
+        min2 = min(A[i] - i, min2);
+    }
+    
+    return max(max1 - min1, max2 - min2);
+}

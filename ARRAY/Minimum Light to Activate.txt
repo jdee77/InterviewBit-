@@ -1,0 +1,27 @@
+int Solution::solve(vector<int> &A, int B) {
+    int count = 0;
+    int size = A.size();
+    int pos = 0;
+    
+    while(pos < size)
+    {
+       int right = min(size - 1, pos + B - 1);
+       int left = max(0, pos - B + 1);
+       bool found = false;
+       
+       while(right>= left)
+       {
+           if(A[right] == 1)
+           {
+               found = true;
+               break;
+           }
+           right --;
+       }
+       if(!found) return -1;
+       
+       count++;
+       pos = right + B;
+    }
+    return count;
+}
